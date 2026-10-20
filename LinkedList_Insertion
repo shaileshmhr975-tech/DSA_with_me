@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <malloc.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+void Traversal(struct Node *head, struct Node *temp) {
+    temp = head;
+    while(temp != NULL) {
+        
+        printf("%d\n",temp->data);
+        temp = temp->next;
+    }
+    
+
+};
+// Insertion at Begining
+struct Node *insertAtFirst(struct Node *head) {
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    ptr->next = head;
+    ptr->data = 57;
+    return ptr;
+}
+// Insertion in between
+struct Node *insertAtIndex(struct Node *head, int index) {
+    struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *p = head;
+    int i = 0;
+    while(i != index - 1) {
+        p = p->next;
+        i++;
+    }
+    ptr->data = 56;
+    ptr->next = p->next;
+    p->next = ptr;
+    return head;
+
+}
+
+int main() {
+    struct Node *head, *second, *third;
+    head = (struct Node *)malloc(sizeof(struct Node));
+    second  = (struct Node *)malloc(sizeof(struct Node));
+    third = (struct Node *)malloc(sizeof(struct Node));
+    head->data = 7;
+    head->next = second;
+    second->data = 10;
+    second->next = third;
+    third->data = 25;
+    third->next = NULL;
+    struct Node *temp;
+    printf("Before Insertion:\n");
+    Traversal(head, temp);
+    int index = 2;
+    printf("After Insertion at position %d :\n",index);
+    insertAtIndex(head, index);
+    Traversal(head, temp);
+    printf("After Deletion :");
+
+
+    // head = insertAtFirst(head);
+    // Traversal(head,temp);
+
+    
+}   
